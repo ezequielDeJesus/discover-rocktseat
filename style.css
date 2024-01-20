@@ -1,0 +1,181 @@
+/*Zerar o pedding e margin em todos os elementos*/
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box; /**diz que o tamanho do elemento sera do tamanho da borda*/
+}
+
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.05);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/MoonStars.svg);
+}
+.light {
+  --text-color: #000;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/Sun.svg);
+}
+body {
+  background: var(--bg-url) no-repeat top center / cover;
+}
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  border: 1px solid burlywood;
+  width: 360px;
+  margin: 56px auto 0;
+  padding: 0px 24px;
+}
+
+/*usado para alinhar tags que são inline */
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+#profile img {
+  /*img é um display inline então ele não alinha no margi: auto... para isso eu posso alinhar de duas formas usando o diplay block ou usando o o pai (profile) e definindo text-align: center */
+  width: 112px;
+  /*display: block;*/
+  /*margin: auto;*/
+}
+/*swith*/
+#swith {
+  border: 1px solid rgb(209, 11, 11);
+  height: 24px;
+  width: 64px;
+  position: relative; /*Faz com que os content que estão dentro tenha uma posição absoluta relativo a esse content*/
+  margin: 4px auto;
+}
+#swith button {
+  position: absolute; /*Posição absoluta da liverdade a colocar o content em qualquer lugar, usamos o top,botton,left,riht para controlar a posição. Tambem livera o z-index*/
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgb(255, 255, 255) var(--switch-bg-url) no-repeat center;
+  border: 1px solid green;
+  top: 50%; /*o top 0 posiciona o content na parte mais alta do content pai, a margin mais alta desse content tagencia uma linha imaginario no valor que defimos, que nesse caso é a metade do content pai */
+  right: 0; /* diz que a parte mais a direita do botão estara tangeciado a parte mais a direita do content pai  */
+  left: 32px;
+  transform: translateX();
+  transform: translateY(
+    -50%
+  ); /*diz que a parte esse componente vai subir a metade da sua altura total*/
+  z-index: 1; /*o z representa a camada, se eu digo que algo esta na camada 1 ele aparecera na frente de algo que está na camada 0*/
+  transition: right  0.2s;
+  transition: left  0.2s;
+}
+.light #swith button {
+  right: 32px; /*diz que o lado direito do  componete ira volta para a posição inicial relacionado ao componente pai  */
+  left: 0;
+}
+#swith span {
+  display: flex; /*o display usara todo o espaço dizponivel do content pai*/
+  height: 24px; /*limita a altura do content*/
+  width: 64px; /*limita o comprimento do content*/
+  border: 1px solid var(--stroke-color);
+  background-color: var(--surface-color);
+  border-radius: 9999px;
+  backdrop-filter: blur(
+    4px
+  ); /*cria um efeito de borrado, serve paara caso o background do componente seja translucida oq estiver atras será borrado*/
+  -webkit-backdrop-filter: blur(
+    4px
+  ); /*faz a mesma coisa, só que para uns navegadores especificos */
+}
+/* -----------------Links---------------*/
+ul {
+  list-style: none; /*apaga os pontos que tem na lista*/
+  display: flex; /*age nos elementos que esta dentro da caixa| ele faz com que os elementos se organizem de maneira flexivel*/
+  flex-direction: column; /*faz com que os elementos se organizem de em colunas */
+  gap: 8px; /*espaçamentos entre os elementos que está o flex está agindo  */
+  padding: 24px 0px;
+}
+ul li a {
+  display: flex;
+  align-items: center; /* justifica o conteudo no mei do content pai de forma vertigal    "---------" centralizado com metade para cima e para para baixo*/
+  justify-content: center; /*justifica o conteudo no meio do content pai de forma vertical "||||||||"centralizado com metado para um lado e metade para o  outro */
+  padding: 16px 24px;
+  border: 1px solid coral; /*uma borda para ensinar de forma didatica */
+  border: 1px solid var(--stroke-color);
+  background: var(--surface-color);
+  border-radius: 8px;
+  text-decoration: none;
+  width: 500;
+  transition: background 0.2s;
+}
+
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+/**Links sociais**/
+
+#social-links {
+  display: flex;
+  padding: 24px 0px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;
+}
+
+#social-links ion-icon {
+  padding: 16px;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+#social-links ion-icon:hover {
+  background-color: var(--highlight-color);
+}
+footer {
+  text-align: center;
+  font-size: 14px;
+  padding: 24px;
+}
+
+/*body{ */
+
+/*
+  background-image: url(./assets/bg-mobile.jpg);/*escolhe a imagem  que vou usar
+  background-repeat: no-repeat; /*diz que não é para repetir
+  background-position: top center;
+  background-size: cover;  /*caso você use a opção contain ele irá conter a imagem dentro do tamnho do body
+  */
+
+/*forma agrupada*/
+/*backgroud: color image repeat position /size    a sintaxe deve ser desse jeito para funciar direito*/
+/*é a mesma coisa que o de cima só que em uma forma simplificada*/
+/*background: url(./assets/bg-mobile.jpg) no-repeat top center /cover;*/
+/*}*/
+
+/*body {
+  background-color: black;
+}
+#id {
+  color: aliceblue;
+}
+.class {
+  color: aqua;
+}
+h1{
+  color: brown;
+}
+/*nesse exemplo vemos que para adiciona um estilo a um id usamos '#' e para adicionar um estilo usamos '.', caso seja só uma tag especifica usamos ela somente*/

@@ -25,7 +25,7 @@
 }
 body {
   background: var(--bg-url) no-repeat top center / cover;
-  height: 100vh; /*diz que 100% da altura da tela tera o prenchimento com o bg*/
+ /* height: 100vh; /*diz que 100% da altura da tela tera o prenchimento com o bg*/
 }
 body * {
   font-family: "Inter", sans-serif;
@@ -73,19 +73,24 @@ body * {
   background: rgb(255, 255, 255) var(--switch-bg-url) no-repeat center;
   border: 1px solid green;
   top: 50%; /*o top 0 posiciona o content na parte mais alta do content pai, a margin mais alta desse content tagencia uma linha imaginario no valor que defimos, que nesse caso é a metade do content pai */
-  right: 0; /* diz que a parte mais a direita do botão estara tangeciado a parte mais a direita do content pai  */
-  left: 32px;
+  /*right: 0;*/ /* diz que a parte mais a direita do botão estara tangeciado a parte mais a direita do content pai  */
+  left: 0;
+  animation: slide-back 0.4s;
   transform: translateX();
   transform: translateY(
     -50%
   ); /*diz que a parte esse componente vai subir a metade da sua altura total*/
   z-index: 1; /*o z representa a camada, se eu digo que algo esta na camada 1 ele aparecera na frente de algo que está na camada 0*/
-  transition: right 0.2s;
-  transition: left 0.2s;
+  transition: outline 0.2s;
+ 
 }
 .light #swith button {
-  right: 32px; /*diz que o lado direito do  componete ira volta para a posição inicial relacionado ao componente pai  */
-  left: 0;
+ /* right: 32px; diz que o lado direito do  componete ira volta para a posição inicial relacionado ao componente pai  
+  left: 0;*/
+  animation: slide-in 0.4s forwards; /*puxa a animação, diz que vai durar 0.4 segundos, depois matem ela no local */
+}
+#swith button:hover{
+  outline: 8px solid var(--highlight-color);
 }
 #swith span {
   display: flex; /*o display usara todo o espaço dizponivel do content pai*/
@@ -165,6 +170,27 @@ footer {
     --bg-url: url(./assets/bg-desktop-light.jpg);
   }
 }
+
+/* animation*/
+@keyframes slide-in{
+  from{
+    left: 0;
+  }
+  to{
+    left: 50%;
+  }
+}
+
+@keyframes slide-back{
+  from{
+    left: 50%;
+  }
+  to{
+    left: 0;
+  }
+}
+
+
 
 /*body{ */
 

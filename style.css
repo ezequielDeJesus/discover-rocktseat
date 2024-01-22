@@ -25,6 +25,7 @@
 }
 body {
   background: var(--bg-url) no-repeat top center / cover;
+  height: 100vh; /*diz que 100% da altura da tela tera o prenchimento com o bg*/
 }
 body * {
   font-family: "Inter", sans-serif;
@@ -79,8 +80,8 @@ body * {
     -50%
   ); /*diz que a parte esse componente vai subir a metade da sua altura total*/
   z-index: 1; /*o z representa a camada, se eu digo que algo esta na camada 1 ele aparecera na frente de algo que está na camada 0*/
-  transition: right  0.2s;
-  transition: left  0.2s;
+  transition: right 0.2s;
+  transition: left 0.2s;
 }
 .light #swith button {
   right: 32px; /*diz que o lado direito do  componete ira volta para a posição inicial relacionado ao componente pai  */
@@ -150,6 +151,19 @@ footer {
   text-align: center;
   font-size: 14px;
   padding: 24px;
+}
+
+/*media queries */
+/*serve para dizer que quando for maior que 700px vai mudar de tela*/
+@media (min-width: 700px) {
+  /*na situação normal */
+  :root {
+    --bg-url: url(./assets/bg-desktop.jpg);
+  }
+  /*na situação light*/
+  .light  {
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
 }
 
 /*body{ */

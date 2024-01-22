@@ -33,9 +33,10 @@ body * {
 
 #container {
   border: 1px solid burlywood;
-  width: 360px;
+  width: 100%;
   margin: 56px auto 0;
   padding: 0px 24px;
+  max-width: 360px;
 }
 
 /*usado para alinhar tags que são inline */
